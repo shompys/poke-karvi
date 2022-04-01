@@ -1,0 +1,6 @@
+.app {
+  background-color: #777;
+  & div {
+    color: #fff;
+  }
+}

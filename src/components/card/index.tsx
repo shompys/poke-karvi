@@ -1,6 +1,7 @@
 import { Card as AuxCard } from './Card';
 
-export default Object.assign(AuxCard, {
+const Card = Object.assign(AuxCard, {
     
 })
+export default Card;
 

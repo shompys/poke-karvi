@@ -1,15 +1,26 @@
-import styles from './App.module.css';
 
-const App = () =>  {
+import Card from "./components/card";
+import styles from "./App.module.css";
+import { usePokemons, } from "./hooks/useQuerys";
+
+export const App = () => {
   const { app } = styles;
   
+  const todo = usePokemons()
+  console.log(todo)
   return (
-
-    <div className={app}>
-      <div>Nesteado papá</div>
-    </div>
-
-  )
-}
-
-export default App;
+    <>
+      <header>Catálogo</header>
+      <main>
+        {/* {
+            <Card pokemon="hola">
+              <img src="" alt="" />
+            </Card>
+          // pokemones.map( ({name, url}) => 
+          
+          // )
+        } */}
+      </main>
+    </>
+  );
+};

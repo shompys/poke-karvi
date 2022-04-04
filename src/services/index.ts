@@ -20,7 +20,7 @@ export const getPokemons = async (
 
 }
 
-export const getPokemonSpeciesId = (id: number) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/pokemon-species`);
+// export const getPokemonSpeciesId = (id: number) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/pokemon-species`);
 
 const apiService = async (url: string, method = 'GET', payload = {}) => {
 

@@ -1,0 +1,7 @@
+.img {
+    width: 100%;
+    background-color: rgba(110, 114, 117, 0.7);
+    display:grid;
+    place-items: center;
+    overflow: hidden;
+}

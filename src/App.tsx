@@ -1,14 +1,16 @@
-
-import styles from "./App.module.css";
+import styles from './App.module.css';
 import { Catalog } from './components/Catalog/index';
 
 export const App = () => {
   
-
   return (
     <>
-      <header>Catálogo</header>
-      <Catalog />
+      <header className={styles.title}>
+          Catálogo
+      </header>
+      <div className={styles.app}>
+        <Catalog />
+      </div>
     </>
   );
 };

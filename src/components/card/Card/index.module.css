@@ -1,0 +1,13 @@
+
+.card{
+    box-shadow: 0 0 1px 5px #fff;
+    background: linear-gradient( 75deg, #D5D5D5 50%, #F5F5F5 50%);
+    width: 13.5rem;
+    border-radius: 10px;
+    cursor:pointer;
+    justify-self: center;
+}
+.card:hover{
+    transform: scale(1.01)
+}
+

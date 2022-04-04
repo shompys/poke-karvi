@@ -1,6 +1,19 @@
 .catalog {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(min(15rem, 1fr)));
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr));
+    background-color: rgb(16, 12, 29);
+    padding: 1rem;
+}
+.title {
     
+}
+
+@media screen and (min-width: 1000px) {
+
+    .catalog {
+        width: 70%;
+        margin: auto;
+    }
+
 }

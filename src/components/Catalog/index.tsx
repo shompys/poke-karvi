@@ -1,31 +1,28 @@
 import Card from '../card'
 import { usePokemons } from '../../hooks/useQuerys'
-import { FC } from 'react'
-import style from './index.module.css';
+import styles from './index.module.css';
 
-interface CatalogProps {
-    
-}
-
-export const Catalog: FC<CatalogProps> = () => {
-  const { catalog } = style;
+export const Catalog = () => {
+  
   const { data: pokemons, isLoading, error } = usePokemons({
     limit: 10,
     offset: 0,
   })
-  
+
   return (
-    <div className={catalog}>
+    <div className={styles.catalog}>
       {
         isLoading ? 
           'loading...'
           :
           pokemons?.map(pokemon => 
             <Card 
-              key={pokemon.id}
+              key={pokemon?.id}
               pokemon={pokemon}
             >
-              <img src={pokemon.sprites.front_default} alt="" />
+              <Card.Types />
+              <Card.Image />
+              <Card.Name />
             </Card>
           )
       }

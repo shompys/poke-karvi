@@ -1,6 +1,7 @@
 import { createContext, FC, ReactElement } from "react";
-import style from './Card.module.css';
-import { PokemonContextProps, PokemonDataProps } from '../../types/index';
+import styles from './index.module.css';
+import { PokemonContextProps, PokemonDataProps } from '../../../types/index';
+import { usePokemons } from "hooks/useQuerys";
 
 interface CardProps {
     children: ReactElement | ReactElement[];
@@ -10,18 +11,17 @@ interface CardProps {
 export const PokeContext = createContext({} as PokemonContextProps);
 
 const { Provider } = PokeContext;
-const { card } = style;
 
 export const Card: FC<CardProps> = ({
     children,
     pokemon
 }) => {
-
+    
     return(
         <Provider value={{ pokemon }}>
-            <div className={card}>
+            <div className={ styles.card }>
                 { children }
             </div>
         </Provider>
-    )
+    );
 }

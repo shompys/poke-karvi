@@ -1,14 +1,19 @@
 import Card from '../card'
 import { usePokemons } from '../../hooks/useQuerys'
 import styles from './index.module.css';
+import { PokemonDataProps } from 'types';
+import { FC } from 'react';
 
-export const Catalog = () => {
+interface CatalogProps {
+  pokemons?: PokemonDataProps[];
+  isLoading: boolean;
+}
+
+export const Catalog: FC<CatalogProps> = ({
+  pokemons,
+  isLoading,
+}) => {
   
-  const { data: pokemons, isLoading, error } = usePokemons({
-    limit: 10,
-    offset: 0,
-  })
-
   return (
     <div className={styles.catalog}>
       {

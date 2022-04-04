@@ -1,7 +1,7 @@
 import { createContext, FC, ReactElement } from "react";
 import styles from './index.module.css';
 import { PokemonContextProps, PokemonDataProps } from '../../../types/index';
-import { usePokemons } from "hooks/useQuerys";
+import { Link } from 'react-router-dom';
 
 interface CardProps {
     children: ReactElement | ReactElement[];
@@ -19,9 +19,11 @@ export const Card: FC<CardProps> = ({
     
     return(
         <Provider value={{ pokemon }}>
-            <div className={ styles.card }>
-                { children }
-            </div>
+            <Link to={`${pokemon.name}/${pokemon.id}`}>
+                <div className={ styles.card }>
+                    { children }
+                </div>
+            </Link>
         </Provider>
     );
 }

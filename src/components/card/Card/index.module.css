@@ -5,7 +5,6 @@
     width: 13.5rem;
     border-radius: 10px;
     cursor:pointer;
-    justify-self: center;
 }
 .card:hover{
     transform: scale(1.01)

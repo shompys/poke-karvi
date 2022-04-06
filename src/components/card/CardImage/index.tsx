@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PokeContext } from '../Card';
+import { PokeContext } from 'components/card/Card';
 import styles from './index.module.css';
 
 export const CardImage = () => {

@@ -1,7 +1,7 @@
 import styles from './index.module.css';
 import { useContext } from 'react';
-import { PokeContext } from '../Card';
-import { capitalizeFirstLetter } from '../../../utils';
+import { PokeContext } from 'components/card/Card';
+import { capitalizeFirstLetter } from 'utils';
 
 const CardName = () => {
     const { pokemon } = useContext( PokeContext );

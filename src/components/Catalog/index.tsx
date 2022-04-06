@@ -1,5 +1,4 @@
-import Card from '../card'
-import { usePokemons } from '../../hooks/useQuerys'
+import Card from 'components/card';
 import styles from './index.module.css';
 import { PokemonDataProps } from 'types';
 import { FC } from 'react';

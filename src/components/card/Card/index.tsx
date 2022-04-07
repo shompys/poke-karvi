@@ -1,6 +1,6 @@
 import { createContext, FC, ReactElement } from "react";
 import styles from './index.module.css';
-import { PokemonContextProps, PokemonDataProps } from 'types';
+import { PokemonContextProps, PokemonDataProps } from '@/types'
 import { Link } from 'react-router-dom';
 
 interface CardProps {

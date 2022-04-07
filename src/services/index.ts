@@ -45,7 +45,7 @@ const apiService = async (url: string, method = 'GET', payload = {}) => {
         },
 
     }
-    const options = methods ? methods[method] : methods['GET'];
+    const options = methods[method] ? methods[method] : methods['GET'];
 
     const res = await fetch(url, options)
 

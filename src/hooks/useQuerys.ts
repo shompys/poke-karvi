@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from "react-query"
-import { PokemonDataProps, QueryParams } from "src/types";
+import { PokemonDataProps, QueryParams } from "@/types";
 import { getPokemons, getPokemonById } from '@/services';
 
 export const usePokemons = ({

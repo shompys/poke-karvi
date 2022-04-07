@@ -1,4 +1,4 @@
-import { PokePageProps } from "types";
+import { PokePageProps } from "@/types";
 
 const getPokeUrls = (
     limit: number,

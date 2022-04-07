@@ -1,6 +1,6 @@
-import Card from 'components/card';
+import Card from '@/components/card';
 import styles from './index.module.css';
-import { PokemonDataProps } from 'types';
+import { PokemonDataProps } from '@/types';
 import { FC } from 'react';
 
 interface CatalogProps {

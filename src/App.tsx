@@ -17,7 +17,7 @@ export const App = () => {
       <div className={styles.app}>
       <BrowserRouter>
         <Routes>
-          <Route path=":pokemon/:id" element={<MyPokemon />}/>
+          <Route path=":pokemon/:id" element={<MyPokemon pokemons={pokemons}/>}/>
 
           <Route path="/*" element={<Catalog pokemons={pokemons} isLoading={isLoading} />}/>
           <Route path="/*" element={<Navigate to="/"/>} />

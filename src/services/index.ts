@@ -7,7 +7,7 @@ const getPokeUrls = (
     `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 );
 
-export const getPokemonById = async (id: number) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+// export const getPokemonById = async (id: number) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/`);
 
 export const getPokemons = async (
     limit: number,
@@ -20,7 +20,7 @@ export const getPokemons = async (
 
 }
 
-// export const getPokemonSpeciesId = (id: number) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/pokemon-species`);
+export const getPokemonSpecie = (url: string) => apiService(url);
 
 const apiService = async (url: string, method = 'GET', payload = {}) => {
 

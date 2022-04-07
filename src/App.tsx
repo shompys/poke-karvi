@@ -1,6 +1,6 @@
 import styles from './App.module.css';
 import { Catalog } from './components/Catalog/';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {Routes, Route, Navigate, HashRouter} from 'react-router-dom';
 import { usePokemons } from './hooks/useQuerys';
 import { MyPokemon } from './components/MyPokemon';
 
@@ -15,14 +15,14 @@ export const App = () => {
           Catálogo
       </header>
       <div className={styles.app}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path=":pokemon/:id" element={<MyPokemon pokemons={pokemons}/>}/>
 
           <Route path="/*" element={<Catalog pokemons={pokemons} isLoading={isLoading} />}/>
           <Route path="/*" element={<Navigate to="/"/>} />
         </Routes>  
-      </BrowserRouter>
+      </HashRouter>
       </div>
     </>
   );

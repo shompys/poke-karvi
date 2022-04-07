@@ -18,15 +18,16 @@ useEffect(() => {
   setPokemon( pokemons?.filter(({id}) => id === Number(urlId))[0] )
   
 }, [pokemons])
-
+  console.log(pokemon)
   return (
     <div className={styles.content}>
-      <pre>
+
+      {/* <pre>
         {
           JSON.stringify(pokemon, null, 3)
 
         }
-      </pre>
+      </pre> */}
     </div>
   )
 }

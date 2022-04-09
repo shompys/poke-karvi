@@ -1,0 +1,22 @@
+.content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display:grid;
+    place-items: center;
+}
+
+.loading{
+    animation: fullRotate 1.2s linear infinite 
+}
+
+@keyframes fullRotate {
+    from {
+        transform: rotateZ(0)
+    }
+    to {
+        transform: rotateZ(360deg)
+    }
+}

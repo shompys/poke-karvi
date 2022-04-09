@@ -2,6 +2,7 @@ import Card from '@/components/card';
 import styles from './index.module.css';
 import { PokemonDataProps } from '@/types';
 import { FC } from 'react';
+import { Loading } from '@/components/Loading';
 
 interface CatalogProps {
   pokemons?: PokemonDataProps[];
@@ -13,24 +14,24 @@ export const Catalog: FC<CatalogProps> = ({
   isLoading,
 }) => {
   
+  if(isLoading) {
+    return <Loading />
+  }
+
   return (
     <div className={styles.catalog}>
       {
-        isLoading ? 
-          'loading...'
-          :
-          pokemons?.map(pokemon => 
-            <Card 
-              key={pokemon?.id}
-              pokemon={pokemon}
-            >
-              <Card.Types />
-              <Card.Image />
-              <Card.Name />
-            </Card>
-          )
+        pokemons?.map(pokemon => 
+          <Card 
+            key={pokemon?.id}
+            pokemon={pokemon}
+          >
+            <Card.Types />
+            <Card.Image />
+            <Card.Name />
+          </Card>
+        )
       }
-        
     </div>
   )
 }

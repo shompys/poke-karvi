@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { usePokemonSpecie } from '@/hooks/useQuerys';
 import styles from './index.module.css';
+import { Loading } from "@/components/Loading";
 
 interface MyPokemonProps {
   pokemons: PokemonDataProps[] | undefined,
@@ -10,19 +11,23 @@ interface MyPokemonProps {
 
 export const MyPokemon: FC<MyPokemonProps> = ({ pokemons }) => {
 
-  const { id: urlId } = useParams();
-
+  const { id: urlId, pokemon: pokeName } = useParams();
+  
   const [pokemon, setPokemon] = useState<PokemonDataProps>();
   const [description, setDescription] = useState<FlavorTextEntry[]>()
 
 
   useEffect(() => {
   
-    setPokemon( pokemons?.filter(({id}) => id === Number(urlId))[0] )
-  
-  }, [pokemons, urlId])
+    setPokemon( 
+      pokemons?.find(({id, name}) => (
+        id === Number(urlId) && name === pokeName
+      ))
+    )
+    
+  }, [pokemons, urlId, pokeName])
 
-  const { data: pokeSpecie, isLoading } = usePokemonSpecie(pokemon?.species.url)
+  const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url)
   
   useEffect(() => {
     setDescription(
@@ -35,8 +40,8 @@ export const MyPokemon: FC<MyPokemonProps> = ({ pokemons }) => {
     <div className={styles.content}>
       
       {
-        isLoading 
-          ? <h1>Loading...</h1> 
+        status !== 'success' 
+          ? <Loading />
           : (<>
 
               <img src={pokemon?.sprites.front_default} alt={pokemon?.name} />

@@ -5,7 +5,7 @@ import { usePokemons } from './hooks/useQuerys';
 import { MyPokemon } from './components/MyPokemon';
 
 export const App = () => {
-  const { data: pokemons, isLoading } = usePokemons({
+  const { data: pokemons, status } = usePokemons({
     limit: 10,
     offset: 0,
   })
@@ -19,7 +19,7 @@ export const App = () => {
         <Routes>
           <Route path=":pokemon/:id" element={<MyPokemon pokemons={pokemons}/>}/>
 
-          <Route path="/*" element={<Catalog pokemons={pokemons} isLoading={isLoading} />}/>
+          <Route path="/*" element={<Catalog pokemons={pokemons} isLoading={status !== 'success'} />}/>
           <Route path="/*" element={<Navigate to="/"/>} />
         </Routes>  
       </HashRouter>

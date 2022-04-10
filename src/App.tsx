@@ -24,7 +24,6 @@ export const App = () => {
       <header className={styles.title}>
           Catálogo
       </header>
-      <button onClick={nextPage}>nextPage</button>
       <div className={styles.app}>
       <HashRouter>
         <Routes>

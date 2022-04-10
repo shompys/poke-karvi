@@ -47,7 +47,7 @@ const useInfiniteScroll = (element: any) => {
         if(!element.current) return setIsEnd(false)
         const observer = new IntersectionObserver(onChange, {
             // root: null, //podemos indicar un elemento a observar, null = default viewport
-            rootMargin: '200px 0px',//establecer margenes desestimando el real a nivel observador para que sepa cuando quiero ejecutar
+            rootMargin: '500px 0px',//establecer margenes desestimando el real a nivel observador para que sepa cuando quiero ejecutar
             threshold: 1.0 //ejecutar el codigo si mi elemento esta totalmente dentro o indicar con %
         });
         observer.observe(element.current !== null && element.current);

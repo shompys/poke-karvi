@@ -1,6 +1,6 @@
 import { FlavorTextEntry, PokemonDataProps } from "@/types";
 import { FC, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { usePokemonSpecie } from '@/hooks/useQuerys';
 import styles from './index.module.css';
 import { Loading } from "@/components/Loading";
@@ -10,22 +10,23 @@ interface MyPokemonProps {
 }
 
 export const MyPokemon: FC<MyPokemonProps> = ({ pokemons }) => {
-
-  const { id: urlId, pokemon: pokeName } = useParams();
-  
+  const { id: urlId } = useParams();
+  const navigate = useNavigate()
   const [pokemon, setPokemon] = useState<PokemonDataProps>();
   const [description, setDescription] = useState<FlavorTextEntry[]>()
 
 
   useEffect(() => {
-  
+    const pokeResult = pokemons?.find(({id}) => (
+      id === Number(urlId)
+    ))
+    console.log(pokeResult)
+    if(!pokeResult) navigate('/')
     setPokemon( 
-      pokemons?.find(({id, name}) => (
-        id === Number(urlId) && name === pokeName
-      ))
+      pokeResult
     )
     
-  }, [pokemons, urlId, pokeName])
+  }, [pokemons, urlId])
 
   const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url)
   

@@ -19,7 +19,7 @@ export const Card: FC<CardProps> = ({
     
     return(
         <Provider value={{ pokemon }}>
-            <Link to={`${pokemon.name}/${pokemon.id}`}>
+            <Link to={`/${pokemon.id}`}>
                 <div className={ styles.card }>
                     { children }
                 </div>

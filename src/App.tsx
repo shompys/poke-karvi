@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 
 export const App = () => {
+  const limitTotalPokemons = 1000;
   const [limit, setLimit] = useState<number>(10)
   const { data: pokemons, status } = usePokemons({
     limit, 
@@ -14,9 +15,10 @@ export const App = () => {
   })
 
   const nextPage = () => {
-    
-    setLimit(page => page + 10);
-    
+    setLimit(page => {
+      if ( page === limitTotalPokemons ) return limitTotalPokemons
+      return page + 10
+    });
   }
  
   return (

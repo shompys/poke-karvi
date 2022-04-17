@@ -16,7 +16,7 @@ export const Catalog: FC<CatalogProps> = ({
   isLoading,
   nextPage,
 }) => {
-  const elementRef = useRef(null)
+  const elementRef = useRef<HTMLDivElement>(null)
   
   const isEnd = useInfiniteScroll(elementRef)
 

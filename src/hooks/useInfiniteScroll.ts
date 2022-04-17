@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ReactHTMLElement, useEffect, useState } from "react";
 
 
 // pasos: 
@@ -24,7 +24,7 @@ import { useEffect, useState } from "react";
 
 
 
-const useInfiniteScroll = (element: any) => {
+const useInfiniteScroll = (element: { current : HTMLDivElement | null }) => {
     const [isEnd, setIsEnd] = useState(false);
 
     const onChange = (
@@ -50,7 +50,7 @@ const useInfiniteScroll = (element: any) => {
             rootMargin: '500px 0px',//establecer margenes desestimando el real a nivel observador para que sepa cuando quiero ejecutar
             threshold: 1.0 //ejecutar el codigo si mi elemento esta totalmente dentro o indicar con %
         });
-        observer.observe(element.current !== null && element.current);
+        observer.observe(element.current);
         return () => observer.disconnect()
     })
     return isEnd;

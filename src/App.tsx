@@ -13,7 +13,7 @@ export const App = () => {
     limit, 
     offset: 0,
   })
-
+  console.log('-> ', pokemons )
   const nextPage = () => {
     setLimit(page => {
       if ( page === limitTotalPokemons ) return limitTotalPokemons

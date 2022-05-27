@@ -45,7 +45,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ pokemons }) => {
           ? <Loading />
           : (<>
 
-              <img src={pokemon?.sprites.front_default} alt={pokemon?.name} />
+              <img src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} />
               <ul>
                 {
                   description?.map(({flavor_text}, index) => <li key={index}>{flavor_text}</li>)

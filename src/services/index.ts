@@ -7,7 +7,7 @@ const getPokeUrls = (
     `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
 );
 
-// export const getPokemonById = async (id: number) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+export const getPokemonById = async (id?: string) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/`);
 
 export const getPokemons = async (
     limit: number,

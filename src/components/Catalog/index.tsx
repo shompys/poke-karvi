@@ -9,12 +9,14 @@ interface CatalogProps {
   pokemons?: PokemonDataProps[];
   isLoading: boolean;
   nextPage: () => void;
+  hasPokemons: boolean;
 }
 
 export const Catalog: FC<CatalogProps> = ({
   pokemons,
   isLoading,
   nextPage,
+  hasPokemons
 }) => {
   const elementRef = useRef<HTMLDivElement>(null)
   
@@ -48,7 +50,7 @@ export const Catalog: FC<CatalogProps> = ({
       }
     </div>
     
-    <p className={styles.loadingMorePokemons}>Cargando mas pokemones...</p>
+    <p className={styles.loadingMorePokemons}>{hasPokemons ? 'Cargando mas pokemones...' : 'Se acabaron los pokemones :('}</p>
     
     <div ref={elementRef}></div>
     </>)

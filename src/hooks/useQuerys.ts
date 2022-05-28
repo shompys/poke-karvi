@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from "react-query"
 import { PokemonDataProps, PokemonDataSpecieProps, QueryParams } from "@/types";
-import { getPokemons, getPokemonSpecie } from '@/services';
+import { getPokemonById, getPokemons, getPokemonSpecie } from '@/services';
 
 export const usePokemons = ({
     limit, 
@@ -18,5 +18,7 @@ export const usePokemonSpecie = (url: string | undefined): UseQueryResult<Pokemo
         enabled: !!url,
     })
 }
+
+export const usePokemonById = (id?: string) => useQuery(['getPokemonById', id], () => getPokemonById(id))
 
 

@@ -1,24 +1,22 @@
 import styles from './App.module.css';
 import { Catalog } from './components/Catalog/';
 import {Routes, Route, Navigate, HashRouter} from 'react-router-dom';
-import { usePokemons } from './hooks/useQuerys';
 import { MyPokemon } from './components/MyPokemon';
+import useToolsRulesPokemons from './hooks/useToolsRulesPokemons';
 import { useState } from 'react';
 
 export const App = () => {
-  const limitTotalPokemons = 1000;
-  const [limit, setLimit] = useState<number>(10)
-  const { data: pokemons, status, isFetchedAfterMount } = usePokemons({
-    limit, 
-    offset: 0,
-  })
-  
-  const nextPage = () => {
-    setLimit(page => {
-      if ( page === limitTotalPokemons ) return limitTotalPokemons
-      return page + 10
-    });
-  }
+
+  const [maxPokemons] = useState(150);
+  const { 
+    pokemons, 
+    status, 
+    nextPage, 
+    hasPokemons 
+  } = useToolsRulesPokemons({
+    cantPokemonsForFetch: 10, 
+    limitTotalPokemons: maxPokemons
+  });
 
   return (
     <>
@@ -28,9 +26,9 @@ export const App = () => {
       <div className={styles.app}>
       <HashRouter>
         <Routes>
-          <Route path=":id" element={<MyPokemon pokemons={pokemons} />}/>
+          <Route path=":id" element={<MyPokemon maxPokemons={maxPokemons}/>}/>
 
-          <Route path="/*" element={<Catalog pokemons={pokemons} isLoading={status !== 'success'} nextPage={nextPage} />}/>
+          <Route path="/*" element={<Catalog pokemons={pokemons} isLoading={status !== 'success'} nextPage={nextPage} hasPokemons={hasPokemons}/>}/>
           <Route path="/*" element={<Navigate to="/"/>} />
         </Routes>  
       </HashRouter>

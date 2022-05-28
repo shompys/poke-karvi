@@ -11,7 +11,8 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
       refetchInterval: 1000 * 60 * 60, // revalidate
       staleTime: Infinity, // data fresh
-      cacheTime: 1000 * 60 * 5// inactive data
+      cacheTime: 1000 * 60 * 5,// inactive data
+      retry: false // en caso de error no reintentar
     }
   }
 });

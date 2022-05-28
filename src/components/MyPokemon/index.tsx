@@ -15,13 +15,13 @@ export const MyPokemon: FC<MyPokemonProps> = ({ pokemons }) => {
   const [pokemon, setPokemon] = useState<PokemonDataProps>();
   const [description, setDescription] = useState<FlavorTextEntry[]>()
 
-
+  console.log(pokemons)
   useEffect(() => {
     const pokeResult = pokemons?.find(({id}) => (
       id === Number(urlId)
     ))
     console.log(pokeResult)
-    if(!pokeResult) navigate('/')
+    if(!pokeResult) return navigate('/')
     setPokemon( 
       pokeResult
     )

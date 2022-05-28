@@ -47,6 +47,9 @@ export const Catalog: FC<CatalogProps> = ({
         )
       }
     </div>
+    
+    <p className={styles.loadingMorePokemons}>Cargando mas pokemones...</p>
+    
     <div ref={elementRef}></div>
     </>)
 }

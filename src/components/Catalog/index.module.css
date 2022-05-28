@@ -6,7 +6,10 @@
     padding: 1rem;
     justify-items: center;
 }
-
+.loadingMorePokemons{
+    font-size: 1.5em;
+    text-align: center;
+}
 @media screen and (min-width: 758px) {
 
     .catalog {

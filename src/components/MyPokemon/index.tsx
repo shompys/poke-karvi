@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useEvolutions, usePokemonById, usePokemonSpecie } from '@/hooks/useQuerys';
 import styles from './index.module.css';
 import { Loading } from "@/components/Loading";
-import useIterableEvolutions from "@/hooks/useIterableEvolutions";
 import { Evolution } from "../Evolution";
 
 interface MyPokemonProps {

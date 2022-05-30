@@ -1,7 +1,7 @@
 import { FlavorTextEntry } from "@/types";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useEvolutions, usePokemonById, usePokemonSpecie } from '@/hooks/useQuerys';
+import { usePokemonById, usePokemonSpecie } from '@/hooks/useQuerys';
 import styles from './index.module.css';
 import { Loading } from "@/components/Loading";
 import { Evolution } from "../Evolution";
@@ -12,8 +12,15 @@ interface MyPokemonProps {
 
 export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
   const { id: urlId } = useParams();
-  const [description, setDescription] = useState<FlavorTextEntry[]>()
+  
+  if( isNaN(Number(urlId)) || Number(urlId) > maxPokemons){
+    return(<p>
+      El param debe ser un numero, debe ser mayor a 0 y no debe superar el máximo de {maxPokemons}. Tu param es "{urlId}". 
+      Si cumple entonces a quejarse con pokeapi
+    </p>)
+  }
 
+  const [description, setDescription] = useState<FlavorTextEntry[]>() 
   const { data: pokemon, isError: errorById } = usePokemonById(urlId)
   const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url)
   
@@ -27,27 +34,24 @@ export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
   return (
     <div className={styles.content}>
       {
-        errorById || Number(urlId) > maxPokemons 
-          ? <p>
-            El param debe ser un numero, debe ser mayor a 0 y no debe superar el máximo de {maxPokemons}. Tu param es "{urlId}". 
-            Si cumple entonces a quejarse con pokeapi
-          </p>
-          : status !== 'success'
+        status !== 'success'
             ? <Loading />
-            : (<section className={styles.contentSection}>
-                <img 
-                  className={styles.img}
-                  src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
-                />
-                <ul>
-                  {
-                    description?.map(({flavor_text}, index) => <li key={index}>{flavor_text}</li>)
-                  }
-                </ul> 
-
-              </section>)
+            : (<>
+              <section className={styles.contentSection}>
+                  <img 
+                    className={styles.img}
+                    src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
+                  />
+                  <ul>
+                    {
+                      description?.map(({flavor_text}, index) => <li key={index}>{flavor_text}</li>)
+                    }
+                  </ul>
+              </section>
+              <Evolution pokemon={pokeSpecie} />
+            </>)
       }
-      <Evolution pokemon={pokeSpecie}/>
+      
     </div>
   )
 }

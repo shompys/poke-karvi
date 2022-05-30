@@ -34,7 +34,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
           </p>
           : status !== 'success'
             ? <Loading />
-            : (<>
+            : (<section className={styles.contentSection}>
                 <img 
                   className={styles.img}
                   src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
@@ -45,7 +45,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
                   }
                 </ul> 
 
-              </>)
+              </section>)
       }
       <Evolution pokemon={pokeSpecie}/>
     </div>

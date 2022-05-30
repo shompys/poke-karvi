@@ -21,7 +21,7 @@ export const App = () => {
   return (
     <>
       <header className={styles.title}>
-          Catálogo
+          App - Pokemon
       </header>
       <div className={styles.app}>
       <HashRouter>

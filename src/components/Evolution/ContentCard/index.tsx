@@ -14,7 +14,7 @@ export const ContentCard: FC<ContentCardProps> = ({
     return (<>
         {
             pokemoncito &&
-                <Card pokemon={pokemoncito} disabledClick={true} >
+                <Card pokemon={pokemoncito} >
                     <Card.Types />
                     <Card.Image />
                     <Card.Name />

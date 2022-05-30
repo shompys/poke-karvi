@@ -3,6 +3,7 @@ import { PokemonDataSpecieProps } from "@/types"
 import { iterableEvolutions } from "@/utils";
 import { FC } from "react"
 import { ContentCard } from "./ContentCard";
+import styles from './index.module.css';
 
 interface EvolutionsProps {
     pokemon?: PokemonDataSpecieProps;
@@ -14,7 +15,7 @@ export const Evolution: FC<EvolutionsProps> = ({ pokemon }) => {
     const evolution = iterableEvolutions({ evolutions: dataEvolution })
 
     return(
-        <section>
+        <section className={styles.section}>
             {
                 evolution?.map(({
                     url

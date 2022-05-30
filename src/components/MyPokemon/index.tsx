@@ -1,9 +1,11 @@
-import { FlavorTextEntry, PokemonDataProps } from "@/types";
+import { FlavorTextEntry } from "@/types";
 import { FC, useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { usePokemonById, usePokemonSpecie } from '@/hooks/useQuerys';
+import { useParams } from "react-router-dom";
+import { useEvolutions, usePokemonById, usePokemonSpecie } from '@/hooks/useQuerys';
 import styles from './index.module.css';
 import { Loading } from "@/components/Loading";
+import useIterableEvolutions from "@/hooks/useIterableEvolutions";
+import { Evolution } from "../Evolution";
 
 interface MyPokemonProps {
   maxPokemons: number;
@@ -11,12 +13,9 @@ interface MyPokemonProps {
 
 export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
   const { id: urlId } = useParams();
-  const navigate = useNavigate()
   const [description, setDescription] = useState<FlavorTextEntry[]>()
 
   const { data: pokemon, isError: errorById } = usePokemonById(urlId)
-  console.log(pokemon)
-
   const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url)
   
   useEffect(() => {
@@ -26,17 +25,21 @@ export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
     
   }, [pokeSpecie])
   
-
   return (
     <div className={styles.content}>
       {
         errorById || Number(urlId) > maxPokemons 
-          ? <p>El param debe ser un numero y no debe superar el máximo de {maxPokemons}. Tu param es {urlId}. Si cumple entonces a quejarse con pokeapi</p>
+          ? <p>
+            El param debe ser un numero, debe ser mayor a 0 y no debe superar el máximo de {maxPokemons}. Tu param es "{urlId}". 
+            Si cumple entonces a quejarse con pokeapi
+          </p>
           : status !== 'success'
             ? <Loading />
             : (<>
-
-                <img src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} />
+                <img 
+                  className={styles.img}
+                  src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
+                />
                 <ul>
                   {
                     description?.map(({flavor_text}, index) => <li key={index}>{flavor_text}</li>)
@@ -45,6 +48,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
 
               </>)
       }
+      <Evolution pokemon={pokeSpecie}/>
     </div>
   )
 }

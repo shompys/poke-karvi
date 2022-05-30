@@ -1,5 +1,9 @@
 .content{
     width: 50%;
     margin: auto;
-    text-align: center;
+    display: grid;
+}
+.img{
+    width: 50%;
+    background-color: aquamarine;
 }

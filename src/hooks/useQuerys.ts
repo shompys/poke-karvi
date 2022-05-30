@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from "react-query"
-import { PokemonDataProps, PokemonDataSpecieProps, QueryParams } from "@/types";
-import { getPokemonById, getPokemons, getPokemonSpecie } from '@/services';
+import { EvolutionsProps, PokemonDataProps, PokemonDataSpecieProps, QueryParams } from "@/types";
+import { getEvolutions, getPokemonById, getPokemons, getPokemonSpecie } from '@/services';
 
 export const usePokemons = ({
     limit, 
@@ -9,7 +9,7 @@ export const usePokemons = ({
     useQuery(['getPokemons', limit, offset], () => getPokemons(limit, offset), { keepPreviousData: true });
 
 
-export const usePokemonSpecie = (url: string | undefined): UseQueryResult<PokemonDataSpecieProps | undefined> => {
+export const usePokemonSpecie = (url?: string): UseQueryResult<PokemonDataSpecieProps | undefined> => {
     
     return useQuery(['getPokemonSpecie', url], () => {
         if(!url) return;
@@ -19,6 +19,15 @@ export const usePokemonSpecie = (url: string | undefined): UseQueryResult<Pokemo
     })
 }
 
-export const usePokemonById = (id?: string) => useQuery(['getPokemonById', id], () => getPokemonById(id))
+export const usePokemonById = (id?: string): UseQueryResult<PokemonDataProps | undefined> => useQuery(['getPokemonById', id], () => getPokemonById(id))
+
+export const useEvolutions = (url?: string): UseQueryResult<EvolutionsProps | undefined> => {
+    return useQuery(['getEvolutions', url], () => {
+        if(!url) return;
+        return getEvolutions(url)
+    }, {
+        enabled: !!url,
+    })
+}
 
 

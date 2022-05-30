@@ -6,9 +6,8 @@ import useToolsRulesPokemons from "./hooks/useToolsRulesPokemons";
 import { useState } from "react";
 
 export const App = () => {
-  const [maxPokemons] = useState(151);
+  const [maxPokemons] = useState(200);
   const { pokemons, status, nextPage, hasPokemons } = useToolsRulesPokemons({
-    cantPokemonsForFetch: 10,
     limitTotalPokemons: maxPokemons,
   });
 

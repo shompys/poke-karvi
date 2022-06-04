@@ -2,12 +2,12 @@ import { useQuery, UseQueryResult } from "react-query"
 import { EvolutionsProps, PokemonDataProps, PokemonDataSpecieProps, QueryParams } from "@/types";
 import { getEvolutions, getPokemonById, getPokemons, getPokemonSpecie } from '@/services';
 
+
 export const usePokemons = ({
     limit, 
     offset,
 }: QueryParams): UseQueryResult<PokemonDataProps[] | undefined> =>
     useQuery(['getPokemons', limit, offset], () => getPokemons(limit, offset), { keepPreviousData: true });
-
 
 export const usePokemonSpecie = (url?: string): UseQueryResult<PokemonDataSpecieProps | undefined> => {
     

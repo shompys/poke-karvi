@@ -6,14 +6,14 @@ import useToolsRulesPokemons from "./hooks/useToolsRulesPokemons";
 import { useState } from "react";
 
 export const App = () => {
-  const [maxPokemons] = useState(200);
+  const [maxPokemons] = useState(151);
   const { pokemons, status, nextPage, hasPokemons } = useToolsRulesPokemons({
     limitTotalPokemons: maxPokemons,
   });
 
   return (
     <>
-      <header className={styles.title}>App - Pokemon</header>
+      <header className={styles.title}>App - Pokemon - máximo de {maxPokemons} - {status}</header>
       <div className={styles.app}>
         <HashRouter>
           <Routes>

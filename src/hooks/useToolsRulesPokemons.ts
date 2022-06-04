@@ -11,18 +11,20 @@ const useToolsRulesPokemons = ({
     
     const [limit, setLimit] = useState<number>(10)
     const [countReturnLimit, setCountReturnLimit] = useState<number>(0)
+   
     const { data: pokemons, status } = usePokemons({
         limit, 
         offset: 0,
     })
     
     const nextPage = () => {
-        setLimit(page => {
-        if ( page > limitTotalPokemons ) {
-            setCountReturnLimit( prev => prev + 1);
-            return limitTotalPokemons
-        }
-        return page + 10
+        setLimit( prev => {
+            if (prev >= limitTotalPokemons) {
+                
+                setCountReturnLimit( prev => prev + 1);
+                return limitTotalPokemons
+            }
+            return prev + 10
         });
     }
 

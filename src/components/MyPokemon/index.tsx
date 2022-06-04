@@ -13,7 +13,7 @@ interface MyPokemonProps {
 export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
   const { id: urlId } = useParams();
   
-  if( isNaN(Number(urlId)) || Number(urlId) > maxPokemons){
+  if( isNaN(Number(urlId)) || Number(urlId) > maxPokemons || Number(urlId) <= 0){
     return(<p>
       El param debe ser un numero, debe ser mayor a 0 y no debe superar el máximo de {maxPokemons}. Tu param es "{urlId}". 
       Si cumple entonces a quejarse con pokeapi

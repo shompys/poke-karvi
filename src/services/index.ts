@@ -29,7 +29,10 @@ const apiService = async (url: string, method = 'GET', payload = {}) => {
     type MethodsProps = {
         [index: string]: {
             method: string;
-            headers: { 'Content-Type': string };
+            headers: { 
+                'Content-Type': string; 
+                'Access-Control-Allow-Origin': string;
+            };
             body?: string;
         };
     }
@@ -37,14 +40,11 @@ const apiService = async (url: string, method = 'GET', payload = {}) => {
 
         'GET': {
             method,
-            headers: { 'Content-Type': 'application/json' },
-        },
-
-        'POST': {
-            method,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+         },
+        }
 
     }
     const options = methods[method] ? methods[method] : methods['GET'];

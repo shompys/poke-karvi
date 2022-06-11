@@ -8,9 +8,9 @@ interface ToolsRulesPokemonsProps {
 const useToolsRulesPokemons = ({
     limitTotalPokemons,
 }: ToolsRulesPokemonsProps ) => {
-    
-    const [limit, setLimit] = useState<number>(10)
-    const [countReturnLimit, setCountReturnLimit] = useState<number>(0)
+    const dataInitial = 10
+    const [limit, setLimit] = useState<number>(dataInitial)
+    const [hasPokemons, setHasPokemons] = useState<boolean>(true)
    
     const { data: pokemons, status } = usePokemons({
         limit, 
@@ -19,9 +19,10 @@ const useToolsRulesPokemons = ({
     
     const nextPage = () => {
         setLimit( prev => {
-            if (prev >= limitTotalPokemons) {
+            
+            if (prev >= limitTotalPokemons - 9) {
                 
-                setCountReturnLimit( prev => prev + 1);
+                setHasPokemons(false);
                 return limitTotalPokemons
             }
             return prev + 10
@@ -32,7 +33,7 @@ const useToolsRulesPokemons = ({
         pokemons,
         status,
         nextPage,
-        hasPokemons: countReturnLimit <= 1 ? true : false
+        hasPokemons,
     }
 }
 export default useToolsRulesPokemons;

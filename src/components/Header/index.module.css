@@ -1,0 +1,28 @@
+.header {
+    position: sticky;
+    background-color: #fff;
+    top: 0;
+    z-index: 999;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 23.688rem), 1fr));
+    margin-bottom: 2rem;
+    box-shadow: 0 0 .5rem .2rem rgba(0, 0, 0, 0.1);
+    justify-items: center
+  }
+.h1 {
+    font-size: 1em;
+    margin: 0;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 758px) {
+
+    .header {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+}

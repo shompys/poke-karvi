@@ -2,6 +2,8 @@
   box-sizing: border-box;
   list-style: none;
   color: #031320;
+  text-decoration: none;
+  
 }
 
 body {
@@ -12,6 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: .9em;
 }
 ul {
   padding: 0;
@@ -19,6 +22,11 @@ ul {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+@media screen and (min-width: 758px) {
+  body{
+    font-size: 1em;
+  }
 }
 
 

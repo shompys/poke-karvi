@@ -4,24 +4,28 @@ import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import { MyPokemon } from "./components/MyPokemon";
 import useToolsRulesPokemons from "./hooks/useToolsRulesPokemons";
 import { useState } from "react";
+import { Header } from "./components/Header";
 
 export const App = () => {
-  const [maxPokemons] = useState(151);
+  const [maxPokemons] = useState<number>(151);
+  const [isCatalog, setIsCatalog] = useState<boolean>(true);
   const { pokemons, status, nextPage, hasPokemons } = useToolsRulesPokemons({
     limitTotalPokemons: maxPokemons,
   });
 
   return (
     <>
-      <header className={styles.title}>App - Pokemon - máximo de {maxPokemons} - {status}</header>
-      <div className={styles.app}>
         <HashRouter>
+          <Header 
+            maxPokemons={maxPokemons} 
+            status={status}
+            isCatalog={isCatalog}
+          />
           <Routes>
             <Route
               path=":id"
-              element={<MyPokemon maxPokemons={maxPokemons} />}
+              element={<MyPokemon setIsCatalog={setIsCatalog} />}
             />
-
             <Route
               path="/*"
               element={
@@ -30,13 +34,13 @@ export const App = () => {
                   isLoading={status !== "success"}
                   nextPage={nextPage}
                   hasPokemons={hasPokemons}
+                  setIsCatalog={setIsCatalog}
                 />
               }
             />
             <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
         </HashRouter>
-      </div>
     </>
   );
 };

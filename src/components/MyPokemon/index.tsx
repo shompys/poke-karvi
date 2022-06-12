@@ -7,30 +7,27 @@ import { Loading } from "@/components/Loading";
 import { Evolution } from "../Evolution";
 
 interface MyPokemonProps {
-  maxPokemons: number;
+  setIsCatalog: (val: boolean) => void;
 }
 
-export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
+export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
   const { id: urlId } = useParams();
   
-  if( isNaN(Number(urlId)) || Number(urlId) > maxPokemons || Number(urlId) <= 0){
-    return(<p>
-      El param debe ser un numero, debe ser mayor a 0 y no debe superar el máximo de {maxPokemons}. Tu param es "{urlId}". 
-      Si cumple entonces a quejarse con pokeapi
-    </p>)
-  }
-
   const [description, setDescription] = useState<FlavorTextEntry[]>() 
   const { data: pokemon, isError: errorById } = usePokemonById(urlId)
   const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url)
-  
+
+  useEffect(() => {
+    setIsCatalog(false)
+  }, [])
+
   useEffect(() => {
     setDescription(
       pokeSpecie?.flavor_text_entries.filter(({ language : { name } }) => name === 'es')
     )
     
   }, [pokeSpecie])
-  
+
   return (
     <div className={styles.content}>
       {
@@ -42,7 +39,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ maxPokemons }) => {
                     className={styles.img}
                     src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
                   />
-                  <ul>
+                  <ul className={styles.ul}>
                     {
                       description?.map(({flavor_text}, index) => <li key={index}>{flavor_text}</li>)
                     }

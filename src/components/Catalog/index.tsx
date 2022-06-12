@@ -10,13 +10,15 @@ interface CatalogProps {
   isLoading: boolean;
   nextPage: () => void;
   hasPokemons: boolean;
+  setIsCatalog: (val: boolean) => void;
 }
 
 export const Catalog: FC<CatalogProps> = ({
   pokemons,
   isLoading,
   nextPage,
-  hasPokemons
+  hasPokemons,
+  setIsCatalog,
 }) => {
   const elementRef = useRef<HTMLDivElement>(null)
   
@@ -24,6 +26,10 @@ export const Catalog: FC<CatalogProps> = ({
 
   const fiumba = useCallback(debounce(() => nextPage(), 500), [])
   
+  useEffect(() => {
+    setIsCatalog(true);
+  }, [])
+
   useEffect(() => {
     if(isEnd) {
       fiumba()

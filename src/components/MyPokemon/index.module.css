@@ -1,14 +1,23 @@
 .content{
     display: grid;
-    
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
 }
 .contentSection{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
+    place-items: center;
+    grid-auto-rows: 25rem;
 }
 .img{
-    
+    object-fit: contain;
+    width: 50%;
+    max-height: 18.75rem;
 }
+.ul {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 @media screen and (min-width: 758px) {
 
     .content {

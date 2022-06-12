@@ -20,7 +20,9 @@ export const Evolution: FC<EvolutionsProps> = ({ pokemon }) => {
                 evolution?.map(({
                     url
                 }) => (
-                    <ContentCard key={url.split('/')[6]} id={url.split('/')[6]}/>
+                    <div onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}>
+                        <ContentCard key={url.split('/')[6]} id={url.split('/')[6]}/>
+                    </div>
                 ))
             }
         </section>

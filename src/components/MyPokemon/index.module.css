@@ -17,12 +17,3 @@
     padding-left: 1rem;
     padding-right: 1rem;
 }
-
-@media screen and (min-width: 758px) {
-
-    .content {
-        width: 70%;
-        margin: auto;
-    }
-
-}

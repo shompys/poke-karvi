@@ -6,7 +6,7 @@ type HeaderProps = {
     status: string;
     isCatalog: boolean;
 }
-
+console.log(innerHeight)
 export const Header: FC<HeaderProps> = ({
     maxPokemons,
     status,
@@ -17,7 +17,7 @@ export const Header: FC<HeaderProps> = ({
             {
                 !isCatalog && <Link to="/" className={styles.link}>Volver al Catálogo</Link>
             }
-            <h1 className={styles.h1}>App - Pokemon - máximo de {maxPokemons} - {status}</h1>
+            <h1 className={`${styles.h1} ${isCatalog && styles.h1Center}`}>App - Pokemon - máximo de {maxPokemons} - {status}</h1>
         </header>
     )
 }

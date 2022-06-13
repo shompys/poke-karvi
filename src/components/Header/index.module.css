@@ -7,22 +7,34 @@
     padding: 1rem;
     font-size: 1.2em;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 23.688rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 23.688rem), 1fr));
     margin-bottom: 2rem;
     box-shadow: 0 0 .5rem .2rem rgba(0, 0, 0, 0.1);
-    justify-items: center
+    place-items: center;
+    gap: 1rem;
+  }
+  .link {
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 .1rem .1rem var(--fontColor);
   }
 .h1 {
     font-size: 1em;
     margin: 0;
-    font-weight: 400;
 }
 
 @media screen and (min-width: 758px) {
+
+    .link {
+        padding: .5rem 1rem;
+    }
 
     .header {
         padding-left: 5rem;
         padding-right: 5rem;
     }
-
+    .h1Center{
+        grid-column: 1/3
+    }
+    
 }

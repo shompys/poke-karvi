@@ -18,6 +18,10 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
   const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url)
 
   useEffect(() => {
+    scrollTo({top: 0, behavior: 'smooth'})
+  })
+  
+  useEffect(() => {
     setIsCatalog(false)
   }, [])
 

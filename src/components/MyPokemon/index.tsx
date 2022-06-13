@@ -43,11 +43,11 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
                     className={styles.img}
                     src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
                   />
-                  <ul className={styles.ul}>
+                  <div className={styles.contentText}>
                     {
-                      description?.map(({flavor_text}, index) => <p key={index} className={styles.li}>{flavor_text}</p>)
+                      description?.map(({flavor_text}, index) => <p key={index} className={styles.p}>{flavor_text}</p>)
                     }
-                  </ul>
+                  </div>
               </section>
               <Evolution pokemon={pokeSpecie} />
             </>)

@@ -20,7 +20,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
   useEffect(() => {
     scrollTo({top: 0, behavior: 'smooth'})
   })
-  
+
   useEffect(() => {
     setIsCatalog(false)
   }, [])
@@ -45,7 +45,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
                   />
                   <ul className={styles.ul}>
                     {
-                      description?.map(({flavor_text}, index) => <li key={index}>{flavor_text}</li>)
+                      description?.map(({flavor_text}, index) => <p key={index} className={styles.li}>{flavor_text}</p>)
                     }
                   </ul>
               </section>

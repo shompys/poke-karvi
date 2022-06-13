@@ -6,7 +6,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
     place-items: center;
-    grid-auto-rows: 25rem;
 }
 .img{
     object-fit: contain;
@@ -14,6 +13,13 @@
     max-height: 18.75rem;
 }
 .ul {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 0 .2rem rgba(116, 167, 218, 0.9);
+    border-radius: 1rem;
+}
+.li{
+    text-indent: .3em;
+    line-height: 1.5em;
 }

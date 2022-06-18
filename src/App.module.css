@@ -18,5 +18,5 @@
 	bottom: .5rem;
 	right: .5rem;
 	z-index: 999999;
-	
+	min-width: 5rem;
 }

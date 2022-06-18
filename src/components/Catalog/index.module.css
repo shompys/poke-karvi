@@ -2,13 +2,24 @@
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr));
-    /* background-color: rgb(213, 208, 240); */
     background-image: url('https://sebamar-poketdex.netlify.app/assets/ui/background.png');
     padding: 1rem;
     justify-items: center;
     border-radius: 1rem;
+    margin-bottom: 2rem;
 }
 .loadingMorePokemons{
+    border-radius: 10px;
+    border: none;
+    color:rgb(53, 71, 121);
+    padding:1rem 5rem;
+    background: #fff;
     font-size: 1.5em;
     text-align: center;
+    grid-column: 1/-1;
+    cursor: pointer;
+}
+.loadingMorePokemons:hover{
+    transform: scale(1.01);
+    
 }

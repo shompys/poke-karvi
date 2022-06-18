@@ -1,13 +1,13 @@
 import Card from '@/components/card';
 import styles from './index.module.css';
 import { PokemonDataProps } from '@/types';
-import { FC, useCallback, useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { Loading } from '@/components/Loading';
 import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import debounce from "just-debounce-it";
 interface CatalogProps {
   pokemons?: PokemonDataProps[];
-  isLoading: boolean;
+  status: string;
   nextPage: () => void;
   hasPokemons: boolean;
   setIsCatalog: (val: boolean) => void;
@@ -15,32 +15,37 @@ interface CatalogProps {
 
 export const Catalog: FC<CatalogProps> = ({
   pokemons,
-  isLoading,
+  status,
   nextPage,
   hasPokemons,
   setIsCatalog,
 }) => {
-  const elementRef = useRef<HTMLDivElement>(null)
+  const elementRef = useRef<HTMLButtonElement>(null)
   
-  const isEnd = useInfiniteScroll(elementRef)
+  const handleOnClick = () => {  
+    nextPage()  
+  }
 
-  const fiumba = useCallback(debounce(() => nextPage(), 500), [])
+  useEffect(() => {
+  
+    if(elementRef.current && pokemons && pokemons.length > 10){
+      
+      scrollTo({
+        top: elementRef?.current.getBoundingClientRect().bottom + scrollY,
+        behavior: "smooth"
+      })
+    }
+  }, [pokemons])
   
   useEffect(() => {
     setIsCatalog(true);
   }, [])
 
-  useEffect(() => {
-    if(isEnd) {
-      fiumba()
-    }
-  }, [isEnd])
-  
-  if(isLoading) {
+  if(status === 'loading') {
     return <Loading />
   }
 
-  return (<>
+  return (
     <div className={styles.catalog}>
       {
         pokemons?.map(pokemon => 
@@ -54,10 +59,7 @@ export const Catalog: FC<CatalogProps> = ({
           </Card>
         )
       }
+      <button ref={elementRef} className={styles.loadingMorePokemons} onClick={handleOnClick}>Load More</button>
     </div>
-    
-    <p className={styles.loadingMorePokemons}>{hasPokemons ? 'Cargando mas pokemones...' : 'Se acabaron los pokemones :('}</p>
-    
-    <div ref={elementRef}></div>
-    </>)
+)
 }

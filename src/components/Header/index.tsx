@@ -11,6 +11,7 @@ export const Header: FC<HeaderProps> = ({
     status,
     isCatalog,
 }) => {
+
     return (
         <header className={styles.header}>
             {

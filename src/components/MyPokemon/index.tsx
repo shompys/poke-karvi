@@ -13,10 +13,9 @@ interface MyPokemonProps {
 export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
   const { id: urlId } = useParams();
   
-  const [description, setDescription] = useState<FlavorTextEntry[]>() 
   const { data: pokemon, isError: errorById } = usePokemonById(urlId)
   const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url)
-
+  
   useEffect(() => {
     scrollTo({top: 0, behavior: 'smooth'})
   })
@@ -25,12 +24,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
     setIsCatalog(false)
   }, [])
 
-  useEffect(() => {
-    setDescription(
-      pokeSpecie?.flavor_text_entries.filter(({ language : { name } }) => name === 'es')
-    )
-    
-  }, [pokeSpecie])
+  const description = pokeSpecie?.flavor_text_entries.filter(({ language : { name } }) => name === 'es')
   
   return (
     <div className={styles.content}>
@@ -39,11 +33,26 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
             ? <Loading />
             : (<>
               <section className={styles.contentSection}>
-                  <img 
-                    className={styles.img}
-                    src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
-                  />
+                  <div className={styles.contentImg}>
+                    <img 
+                      className={styles.img}
+                      src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
+                    />
+                  </div>
                   <div className={styles.contentText}>
+                    <h1>Lorem Ipsum</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa diam nisi
+                        enim convallis. Eget in malesuada enim diam lectus. Odio arcu egestas
+                        nibh aliquet tortor. Posuere est curabitur aliquam, malesuada neque, vitae
+                        arcu. Ac quam sit purus consequat rutrum sit elementum. Scelerisque
+                        commodo iaculis amet, tincidunt sodales. Lacus, arcu, convallis nulla
+                        ipsum. Eleifend consequat mauris volutpat commodo. Tellus ullamcorper
+                        dui ac condimentum. Mauris purus nibh augue non quis vitae. Aliquam
+                        tellus faucibus in id.
+                    </p>
+                  </div>
+                  <div className={styles.contentDescription}>
+                    <h3 className={styles.h3}>Descripción</h3>
                     {
                       description?.map(({flavor_text}, index) => <p key={index} className={styles.p}>{flavor_text}</p>)
                     }

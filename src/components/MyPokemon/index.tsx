@@ -41,7 +41,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
                   </div>
                   <div className={styles.contentText}>
                     <h1>Lorem Ipsum</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa diam nisi
+                    <p className={styles.p}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa diam nisi
                         enim convallis. Eget in malesuada enim diam lectus. Odio arcu egestas
                         nibh aliquet tortor. Posuere est curabitur aliquam, malesuada neque, vitae
                         arcu. Ac quam sit purus consequat rutrum sit elementum. Scelerisque

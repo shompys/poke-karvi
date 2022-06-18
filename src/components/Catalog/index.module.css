@@ -23,3 +23,10 @@
     transform: scale(1.01);
     
 }
+.error {
+    grid-column: 1/-1;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    color:rgb(184, 13, 22)
+}

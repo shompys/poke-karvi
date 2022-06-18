@@ -54,10 +54,14 @@ export const Catalog: FC<CatalogProps> = ({
             pokemon={pokemon}
           >
             <Card.Types />
+            <Card.Number />
             <Card.Image />
             <Card.Name />
           </Card>
         )
+      }
+      {
+        status === 'error' && <h1 className={styles.error}>Algo salió mal pero vos dale al boton</h1>
       }
       <button ref={elementRef} className={styles.loadingMorePokemons} onClick={handleOnClick}>Load More</button>
     </div>

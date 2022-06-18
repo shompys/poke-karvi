@@ -8,7 +8,7 @@ import style from './App.module.css';
 
 export const App = () => {
 	const [isCatalog, setIsCatalog] = useState<boolean>(true);
-	const { pokemons, status, nextPage } = useToolsRulesPokemons();
+	const { pokemons, status, nextPage, hasPokemon } = useToolsRulesPokemons();
 	const [ isCartoon, setIsCartoon ] = useState(false);
 	return (
 		<>
@@ -37,6 +37,7 @@ export const App = () => {
 								status={status}
 								nextPage={nextPage}
 								setIsCatalog={setIsCatalog}
+								hasPokemon={hasPokemon}
 							/>
 						}
 					/>

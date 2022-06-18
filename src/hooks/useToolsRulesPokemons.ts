@@ -6,18 +6,28 @@ const useToolsRulesPokemons = () => {
 	const dataInitial = 10;
 	const [counter, setCounter] = useState<number>(0);
 	const [pokemons, setPokemons] = useState<PokemonDataProps[]>([]);
-
+	const [hasPokemon, setHasPokemon] = useState<boolean>(true);
 	const { data, status } = usePokemons({
 		limit: dataInitial, 
 		offset: counter,
 	});
-    
-	useEffect(() => {
+
+	useEffect(() => {	
 		if(!data) return;
-		setPokemons(prev => ([
-			...prev,
-			...data,
-		]));
+		if (data.length === 0){
+			setHasPokemon(false);
+		}
+		setPokemons(prev => {
+			
+			// if(JSON.stringify(prev) === JSON.stringify(data)){
+			// 	return prev;
+			// }
+
+			return [
+				...prev,
+				...data,
+			];
+		});
 
 	}, [data]);
 
@@ -28,7 +38,8 @@ const useToolsRulesPokemons = () => {
 	return {
 		pokemons,
 		status,
-		nextPage
+		nextPage,
+		hasPokemon,
 	};
 };
 export default useToolsRulesPokemons;

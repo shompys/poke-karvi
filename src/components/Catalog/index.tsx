@@ -9,6 +9,7 @@ interface CatalogProps {
   nextPage: () => void;
   setIsCatalog: (val: boolean) => void;
   isCartoon: boolean;
+  hasPokemon: boolean;
 }
 
 export const Catalog: FC<CatalogProps> = ({
@@ -17,6 +18,7 @@ export const Catalog: FC<CatalogProps> = ({
 	nextPage,
 	setIsCatalog,
 	isCartoon,
+	hasPokemon,
 }) => {
 	const elementRef = useRef<HTMLButtonElement>(null);
   
@@ -61,7 +63,7 @@ export const Catalog: FC<CatalogProps> = ({
 			{
 				status === 'error' && <h1 className={styles.error}>Algo salió mal pero vos dale al boton</h1>
 			}
-			<button ref={elementRef} className={styles.loadingMorePokemons} onClick={handleOnClick}>Load More</button>
+			<button ref={elementRef} className={styles.loadingMorePokemons} onClick={handleOnClick}>{hasPokemon ? 'Cargar más' : 'Se acabaron'}</button>
 		</div>
 	);
 };

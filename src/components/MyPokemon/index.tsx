@@ -31,7 +31,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
     )
     
   }, [pokeSpecie])
-
+  
   return (
     <div className={styles.content}>
       {

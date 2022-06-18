@@ -13,7 +13,7 @@ export const Evolution: FC<EvolutionsProps> = ({ pokemon }) => {
 
     const { data: dataEvolution} = useEvolutions(pokemon?.evolution_chain.url)
     const evolution = iterableEvolutions({ evolutions: dataEvolution })
-    
+
     return(
         <section className={styles.section}>
             {

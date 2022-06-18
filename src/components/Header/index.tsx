@@ -6,7 +6,6 @@ type HeaderProps = {
     status: string;
     isCatalog: boolean;
 }
-console.log(innerHeight)
 export const Header: FC<HeaderProps> = ({
     maxPokemons,
     status,

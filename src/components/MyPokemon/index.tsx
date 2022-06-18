@@ -7,14 +7,15 @@ import { Evolution } from '../Evolution';
 
 interface MyPokemonProps {
   setIsCatalog: (val: boolean) => void;
+  isCartoon: boolean;
 }
 
-export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
+export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog, isCartoon }) => {
 	const { id: urlId } = useParams();
   
 	const { data: pokemon } = usePokemonById(urlId);
 	const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url);
-  
+
 	useEffect(() => {
 		scrollTo({top: 0, behavior: 'smooth'});
 	});
@@ -24,7 +25,6 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
 	}, []);
 
 	const description = pokeSpecie?.flavor_text_entries.filter(({ language : { name } }) => name === 'es');
-  
 	return (
 		<div className={styles.content}>
 			{
@@ -35,7 +35,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
 							<div className={styles.contentImg}>
 								<img 
 									className={styles.img}
-									src={pokemon?.sprites?.other?.dream_world?.front_default} alt={pokemon?.name} 
+									src={ (isCartoon ? pokemon?.sprites?.other?.dream_world?.front_default : pokemon?.sprites?.other?.home?.front_default) ?? 'https://d2q2so0mkhigrt.cloudfront.net/shompys-icon.webp'} alt={pokemon?.name} 
 								/>
 							</div>
 							<div className={styles.contentText}>
@@ -60,7 +60,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
 								</p>
 							</div>
 						</section>
-						<Evolution pokemon={pokeSpecie} />
+						<Evolution pokemon={pokeSpecie} isCartoon={isCartoon}/>
 					</>)
 			}
       

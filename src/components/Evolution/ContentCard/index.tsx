@@ -4,10 +4,11 @@ import { FC } from 'react';
 
 interface ContentCardProps {
     id: string;
+	isCartoon: boolean;
 }
 
 export const ContentCard: FC<ContentCardProps> = ({
-	id
+	id, isCartoon
 }) => {
 
 	const {data: pokemoncito} = usePokemonById(id);
@@ -17,7 +18,7 @@ export const ContentCard: FC<ContentCardProps> = ({
                 <Card pokemon={pokemoncito} >
                 	<Card.Types />
                 	<Card.Number />
-                	<Card.Image />
+                	<Card.Image isCartoon={isCartoon}/>
                 	<Card.Name />
                 </Card>
 		}

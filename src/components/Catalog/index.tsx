@@ -8,6 +8,7 @@ interface CatalogProps {
   status: string;
   nextPage: () => void;
   setIsCatalog: (val: boolean) => void;
+  isCartoon: boolean;
 }
 
 export const Catalog: FC<CatalogProps> = ({
@@ -15,6 +16,7 @@ export const Catalog: FC<CatalogProps> = ({
 	status,
 	nextPage,
 	setIsCatalog,
+	isCartoon,
 }) => {
 	const elementRef = useRef<HTMLButtonElement>(null);
   
@@ -51,7 +53,7 @@ export const Catalog: FC<CatalogProps> = ({
 					>
 						<Card.Types />
 						<Card.Number />
-						<Card.Image />
+						<Card.Image isCartoon={isCartoon}/>
 						<Card.Name />
 					</Card>
 				)

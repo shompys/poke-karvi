@@ -15,7 +15,7 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog, isCartoon }) => {
   
 	const { data: pokemon } = usePokemonById(urlId);
 	const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url);
-
+	
 	useEffect(() => {
 		scrollTo({top: 0, behavior: 'smooth'});
 	});

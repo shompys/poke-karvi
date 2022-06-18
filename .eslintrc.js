@@ -41,6 +41,7 @@ module.exports = {
 		'react/react-in-jsx-scope': 'off',
 		'@typescript-eslint/no-non-null-assertion': 'warn',
 		'no-mixed-spaces-and-tabs': 0,
+		'@typescript-eslint/no-unused-vars': 'error',
 	},
 	'settings': {
 		'react': {

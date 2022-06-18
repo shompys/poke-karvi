@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 
 export const App = () => {
-	const [maxPokemons] = useState<number>(5000);
 	const [isCatalog, setIsCatalog] = useState<boolean>(true);
 	const { pokemons, status, nextPage } = useToolsRulesPokemons();
 
@@ -14,7 +13,6 @@ export const App = () => {
 		<>
 			<HashRouter>
 				<Header 
-					maxPokemons={maxPokemons} 
 					status={status}
 					isCatalog={isCatalog}
 				/>

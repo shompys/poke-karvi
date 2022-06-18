@@ -40,21 +40,24 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog }) => {
 							</div>
 							<div className={styles.contentText}>
 								<h1>Lorem Ipsum</h1>
-								<p className={styles.p}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa diam nisi
-                        enim convallis. Eget in malesuada enim diam lectus. Odio arcu egestas
-                        nibh aliquet tortor. Posuere est curabitur aliquam, malesuada neque, vitae
-                        arcu. Ac quam sit purus consequat rutrum sit elementum. Scelerisque
-                        commodo iaculis amet, tincidunt sodales. Lacus, arcu, convallis nulla
-                        ipsum. Eleifend consequat mauris volutpat commodo. Tellus ullamcorper
-                        dui ac condimentum. Mauris purus nibh augue non quis vitae. Aliquam
-                        tellus faucibus in id.
+								<p className={styles.p}>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa diam nisi
+									enim convallis. Eget in malesuada enim diam lectus. Odio arcu egestas
+									nibh aliquet tortor. Posuere est curabitur aliquam, malesuada neque, vitae
+									arcu. Ac quam sit purus consequat rutrum sit elementum. Scelerisque
+									commodo iaculis amet, tincidunt sodales. Lacus, arcu, convallis nulla
+									ipsum. Eleifend consequat mauris volutpat commodo. Tellus ullamcorper
+									dui ac condimentum. Mauris purus nibh augue non quis vitae. Aliquam
+									tellus faucibus in id.
 								</p>
 							</div>
 							<div className={styles.contentDescription}>
 								<h3 className={styles.h3}>Descripción</h3>
-								{
-									description?.map(({flavor_text}, index) => <p key={index} className={styles.p}>{flavor_text}</p>)
-								}
+								<p className={styles.p2}>
+									{
+										description?.map(({flavor_text}) => <>{flavor_text} <br/></>)
+									}
+								</p>
 							</div>
 						</section>
 						<Evolution pokemon={pokeSpecie} />

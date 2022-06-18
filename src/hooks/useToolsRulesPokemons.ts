@@ -2,13 +2,7 @@ import { useEffect, useState } from 'react';
 import { usePokemons } from '@/hooks/useQuerys';
 import { PokemonDataProps } from '@/types';
 
-interface ToolsRulesPokemonsProps {
-    limitTotalPokemons: number;
-}
-
-const useToolsRulesPokemons = ({
-    limitTotalPokemons,
-}: ToolsRulesPokemonsProps ) => {
+const useToolsRulesPokemons = () => {
     const dataInitial = 10
     const [counter, setCounter] = useState<number>(0)
     const [pokemons, setPokemons] = useState<PokemonDataProps[]>([])

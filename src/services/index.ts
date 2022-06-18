@@ -15,9 +15,9 @@ export const getPokemons = async (
     limit: number,
     offset: number
 ) => {
-
+    
     const { results } = await getPokeUrls(limit, offset);
-
+    console.log(results)
     return await Promise.all(results.map(async ({ url }) => apiService(url)))
 
 }

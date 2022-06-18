@@ -9,7 +9,7 @@ import { Header } from "./components/Header";
 export const App = () => {
   const [maxPokemons] = useState<number>(5000);
   const [isCatalog, setIsCatalog] = useState<boolean>(true);
-  const { pokemons, status, nextPage, hasPokemons } = useToolsRulesPokemons({
+  const { pokemons, status, nextPage } = useToolsRulesPokemons({
     limitTotalPokemons: maxPokemons,
   });
 
@@ -33,7 +33,6 @@ export const App = () => {
                   pokemons={pokemons}
                   status={status}
                   nextPage={nextPage}
-                  hasPokemons={hasPokemons}
                   setIsCatalog={setIsCatalog}
                 />
               }

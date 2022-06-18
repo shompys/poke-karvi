@@ -9,7 +9,6 @@ interface CatalogProps {
   pokemons?: PokemonDataProps[];
   status: string;
   nextPage: () => void;
-  hasPokemons: boolean;
   setIsCatalog: (val: boolean) => void;
 }
 
@@ -17,7 +16,6 @@ export const Catalog: FC<CatalogProps> = ({
   pokemons,
   status,
   nextPage,
-  hasPokemons,
   setIsCatalog,
 }) => {
   const elementRef = useRef<HTMLButtonElement>(null)

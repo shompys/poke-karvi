@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePokemons } from '@/hooks/useQuerys';
+import { PokemonDataProps } from '@/types';
 
 interface ToolsRulesPokemonsProps {
     limitTotalPokemons: number;
@@ -9,31 +10,31 @@ const useToolsRulesPokemons = ({
     limitTotalPokemons,
 }: ToolsRulesPokemonsProps ) => {
     const dataInitial = 10
-    const [limit, setLimit] = useState<number>(dataInitial)
-    const [hasPokemons, setHasPokemons] = useState<boolean>(true)
-   
-    const { data: pokemons, status } = usePokemons({
-        limit, 
-        offset: 0,
+    const [counter, setCounter] = useState<number>(0)
+    const [pokemons, setPokemons] = useState<PokemonDataProps[]>([])
+
+    const { data, status } = usePokemons({
+        limit: dataInitial, 
+        offset: counter,
     })
     
+    useEffect(() => {
+        if(!data) return;
+        setPokemons(prev => ([
+            ...prev,
+            ...data,
+        ]))
+
+    }, [data])
+
     const nextPage = () => {
-        setLimit( prev => {
-            
-            if (prev >= limitTotalPokemons - 9) {
-                
-                setHasPokemons(false);
-                return limitTotalPokemons
-            }
-            return prev + 10
-        });
+        setCounter(prev => prev + dataInitial);
     }
 
     return {
         pokemons,
         status,
-        nextPage,
-        hasPokemons,
+        nextPage
     }
 }
 export default useToolsRulesPokemons;

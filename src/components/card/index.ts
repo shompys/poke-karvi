@@ -6,11 +6,11 @@ import { CardTypes } from './CardTypes';
 import { CardNumber } from './CardNumber';
 
 const Card = Object.assign(AuxCard, {
-    Image: CardImage,
-    Types: CardTypes,
-    Name: CardName,
-    Number: CardNumber,
-})
+	Image: CardImage,
+	Types: CardTypes,
+	Name: CardName,
+	Number: CardNumber,
+});
 
 export default Card;
 

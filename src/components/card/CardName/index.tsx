@@ -4,13 +4,13 @@ import { PokeContext } from '@/components/card/Card';
 import { capitalizeFirstLetter } from '@/utils';
 
 const CardName = () => {
-    const { pokemon } = useContext( PokeContext );
+	const { pokemon } = useContext( PokeContext );
     
-    return (
-        <div className={styles.name}>
-            { capitalizeFirstLetter(pokemon?.name || 'shompys') }
-        </div>
-    )
-}
+	return (
+		<div className={styles.name}>
+			{ capitalizeFirstLetter(pokemon?.name || 'shompys') }
+		</div>
+	);
+};
 
 export default CardName;

@@ -4,14 +4,14 @@ import styles from './index.module.css';
 
 export const CardImage = () => {
 
-    const { pokemon } = useContext( PokeContext );
+	const { pokemon } = useContext( PokeContext );
 
-    return (
-        <div className={ styles.img }>
-            <img
-                src={ pokemon?.sprites?.other?.dream_world?.front_default ||'https://d2q2so0mkhigrt.cloudfront.net/shompys-icon.webp'} 
-                alt={pokemon?.name || 'shompys'}
-            />
-        </div>
-    )
-}
+	return (
+		<div className={ styles.img }>
+			<img
+				src={ pokemon?.sprites?.other?.dream_world?.front_default ||'https://d2q2so0mkhigrt.cloudfront.net/shompys-icon.webp'} 
+				alt={pokemon?.name || 'shompys'}
+			/>
+		</div>
+	);
+};

@@ -3,32 +3,32 @@ import { usePokemons } from '@/hooks/useQuerys';
 import { PokemonDataProps } from '@/types';
 
 const useToolsRulesPokemons = () => {
-    const dataInitial = 10
-    const [counter, setCounter] = useState<number>(0)
-    const [pokemons, setPokemons] = useState<PokemonDataProps[]>([])
+	const dataInitial = 10;
+	const [counter, setCounter] = useState<number>(0);
+	const [pokemons, setPokemons] = useState<PokemonDataProps[]>([]);
 
-    const { data, status } = usePokemons({
-        limit: dataInitial, 
-        offset: counter,
-    })
+	const { data, status } = usePokemons({
+		limit: dataInitial, 
+		offset: counter,
+	});
     
-    useEffect(() => {
-        if(!data) return;
-        setPokemons(prev => ([
-            ...prev,
-            ...data,
-        ]))
+	useEffect(() => {
+		if(!data) return;
+		setPokemons(prev => ([
+			...prev,
+			...data,
+		]));
 
-    }, [data])
+	}, [data]);
 
-    const nextPage = () => {
-        setCounter(prev => prev + dataInitial);
-    }
+	const nextPage = () => {
+		setCounter(prev => prev + dataInitial);
+	};
 
-    return {
-        pokemons,
-        status,
-        nextPage
-    }
-}
+	return {
+		pokemons,
+		status,
+		nextPage
+	};
+};
 export default useToolsRulesPokemons;

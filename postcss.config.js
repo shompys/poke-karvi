@@ -1,8 +1,8 @@
 module.exports = {
 
-    plugins: {
-        "postcss-nesting": false,
-        autoprefixer: true,
-    },
+	plugins: {
+		'postcss-nesting': false,
+		autoprefixer: true,
+	},
 
-}
+};

@@ -24,7 +24,7 @@
 	color: var(--fontColor);
 }
 .p2 span{
-    color: rgb(158, 160, 165);
+    color: var(--fontColor);
 	line-height: 2em;
     
 }

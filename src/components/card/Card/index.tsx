@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 interface CardProps {
     children: ReactElement | ReactElement[];
     pokemon: PokemonDataProps;
-    disabledClick?: boolean
+    disabledClick?: boolean;
 }
 
 export const PokeContext = createContext({} as PokemonContextProps);

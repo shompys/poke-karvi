@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from 'react-query';
-import { EvolutionsProps, PokemonDataProps, PokemonDataSpecieProps, QueryParams } from '@/types';
-import { getEvolutions, getPokemonById, getPokemons, getPokemonSpecie } from '@/services';
+import { EvolutionsProps, Habitat, PokemonDataProps, PokemonDataSpecieProps, QueryParams } from '@/types';
+import { getEvolutions, getHabitatById, getPokemonById, getPokemons, getPokemonSpecie } from '@/services';
 
 
 export const usePokemons = ({
@@ -20,6 +20,8 @@ export const usePokemonSpecie = (url?: string): UseQueryResult<PokemonDataSpecie
 };
 
 export const usePokemonById = (id?: string): UseQueryResult<PokemonDataProps | undefined> => useQuery(['getPokemonById', id], () => getPokemonById(id));
+
+export const useHabitatById = (id?: string): UseQueryResult<Habitat | undefined> => useQuery(['getHabitatById', id], () => getHabitatById(id));
 
 export const useEvolutions = (url?: string): UseQueryResult<EvolutionsProps | undefined> => {
 	return useQuery(['getEvolutions', url], () => {

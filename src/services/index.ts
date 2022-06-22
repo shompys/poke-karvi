@@ -9,6 +9,8 @@ const getPokeUrls = (
 
 export const getPokemonById = async (id?: string) => apiService(`https://pokeapi.co/api/v2/pokemon/${id}/`);
 
+export const getHabitatById = async (id?: string) => apiService(`https://pokeapi.co/api/v2/pokemon-habitat/${id}`);
+
 export const getEvolutions = async (url: string) => apiService(url);
 
 export const getPokemons = async (

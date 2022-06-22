@@ -8,14 +8,14 @@ interface ContentCardProps {
 }
 
 export const ContentCard: FC<ContentCardProps> = ({
-	id, isCartoon
+	id, isCartoon,
 }) => {
 
 	const {data: pokemoncito} = usePokemonById(id);
 	return (<>
 		{
 			pokemoncito &&
-                <Card pokemon={pokemoncito} >
+                <Card pokemon={pokemoncito}>
                 	<Card.Types />
                 	<Card.Number />
                 	<Card.Image isCartoon={isCartoon}/>

@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { usePokemonById, usePokemonSpecie } from '@/hooks/useQuerys';
+import { useHabitatById, usePokemonById, usePokemonSpecie } from '@/hooks/useQuerys';
 import styles from './index.module.css';
 import { Loading } from '@/components/Loading';
 import { Evolution } from '../Evolution';
@@ -15,16 +15,21 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog, isCartoon }) => {
   
 	const { data: pokemon } = usePokemonById(urlId);
 	const { data: pokeSpecie, status } = usePokemonSpecie(pokemon?.species.url);
-	
-	useEffect(() => {
-		scrollTo({top: 0, behavior: 'smooth'});
-	});
+	const { data: pokeHabitat } = useHabitatById(urlId);
+
+	const LOCALE = 'es';
 
 	useEffect(() => {
 		setIsCatalog(false);
 	}, []);
 
-	const description = pokeSpecie?.flavor_text_entries.filter(({ language : { name } }) => name === 'es');
+	const handleScrollTop = () => 
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+
+	const habitat = pokeHabitat?.names.filter(({language: { name }}) => name === LOCALE);
+	
+	const description = pokeSpecie?.flavor_text_entries.filter(({ language : { name } }) => name === LOCALE);
+
 	return (
 		<div className={styles.content}>
 			{
@@ -39,28 +44,25 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog, isCartoon }) => {
 								/>
 							</div>
 							<div className={styles.contentText}>
-								<h1>Lorem Ipsum</h1>
-								<p className={styles.p}>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa diam nisi
-									enim convallis. Eget in malesuada enim diam lectus. Odio arcu egestas
-									nibh aliquet tortor. Posuere est curabitur aliquam, malesuada neque, vitae
-									arcu. Ac quam sit purus consequat rutrum sit elementum. Scelerisque
-									commodo iaculis amet, tincidunt sodales. Lacus, arcu, convallis nulla
-									ipsum. Eleifend consequat mauris volutpat commodo. Tellus ullamcorper
-									dui ac condimentum. Mauris purus nibh augue non quis vitae. Aliquam
-									tellus faucibus in id.
-								</p>
+								<h1>{pokemon?.species.name}</h1>
+								
+								<p className={styles.p}>Tipo/s: {pokemon?.types.map(item => item.type.name + ' ')}</p>
+								<p className={styles.p}>Habitats: {habitat?.map( item => item.name + ' ') ?? ':('}</p>
+								<p className={styles.p}>Altura: { pokemon?.height && pokemon?.height / 10} metros</p>
+								<p className={styles.p}>Peso: { pokemon?.weight && pokemon?.weight / 10 } kg</p>
+								<p className={styles.p}>Habilidades: { pokemon?.abilities.map(item => item.ability.name + ' ') }</p>
+
 							</div>
 							<div className={styles.contentDescription}>
 								<h3 className={styles.h3}>Descripción</h3>
 								<p className={styles.p2}>
 									{
-										description?.map(({flavor_text}) => <>{flavor_text} <br/></>)
+										description?.map(({flavor_text}, index) => <span key={index}>{flavor_text} <br/></span>)
 									}
 								</p>
 							</div>
 						</section>
-						<Evolution pokemon={pokeSpecie} isCartoon={isCartoon}/>
+						<Evolution pokemon={pokeSpecie} isCartoon={isCartoon} handleScrollTop={handleScrollTop}/>
 					</>)
 			}
       

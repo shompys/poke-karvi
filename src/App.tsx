@@ -9,7 +9,7 @@ import style from './App.module.css';
 export const App = () => {
 	const [isCatalog, setIsCatalog] = useState<boolean>(true);
 	const { pokemons, status, nextPage, hasPokemon } = useToolsRulesPokemons();
-	const [ isCartoon, setIsCartoon ] = useState(false);
+	const [ isCartoon, setIsCartoon ] = useState(true);
 	return (
 		<>
 			<button 

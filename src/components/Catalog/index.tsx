@@ -41,7 +41,7 @@ export const Catalog: FC<CatalogProps> = ({
 		setIsCatalog(true);
 	}, []);
 
-	if(status === 'loading') {
+	if(status === 'loading' && pokemons && pokemons?.length < 1) {
 		return <Loading />;
 	}
 
@@ -63,7 +63,20 @@ export const Catalog: FC<CatalogProps> = ({
 			{
 				status === 'error' && <h1 className={styles.error}>Algo salió mal pero vos dale al boton</h1>
 			}
-			<button ref={elementRef} className={styles.loadingMorePokemons} onClick={handleOnClick}>{hasPokemon ? 'Cargar más' : 'Se acabaron'}</button>
+			<button 
+				ref={elementRef} 
+				className={styles.loadingMorePokemons} 
+				onClick={handleOnClick} 
+				disabled={status=== 'loading'}
+			>
+				{ 
+					status === 'loading' 
+						? 'Cargando... '
+						: hasPokemon 
+							? 'Cargar más' 
+							: 'Se acabaron'
+				}
+			</button>
 		</div>
 	);
 };

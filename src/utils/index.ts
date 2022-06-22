@@ -1,6 +1,6 @@
 import { Chain, EvolutionsProps, Species } from '@/types';
 
-export const capitalizeFirstLetter = (text: string) => {
+export const capitalizeFirstLetter = (text?: string) => {
 	if(!text) return 'No data';
 	const capitalizeLetter = text?.charAt(0).toUpperCase();
 	const lowerCaseText = text?.slice(1);

@@ -4,6 +4,7 @@ import { useHabitatById, usePokemonById, usePokemonSpecie } from '@/hooks/useQue
 import styles from './index.module.css';
 import { Loading } from '@/components/Loading';
 import { Evolution } from '../Evolution';
+import { capitalizeFirstLetter } from '@/utils';
 
 interface MyPokemonProps {
   setIsCatalog: (val: boolean) => void;
@@ -44,13 +45,13 @@ export const MyPokemon: FC<MyPokemonProps> = ({ setIsCatalog, isCartoon }) => {
 								/>
 							</div>
 							<div className={styles.contentText}>
-								<h1>{pokemon?.species.name}</h1>
+								<h1>{capitalizeFirstLetter(pokemon?.species.name)}</h1>
 								
-								<p className={styles.p}>Tipo/s: {pokemon?.types.map(item => item.type.name + ' ')}</p>
-								<p className={styles.p}>Habitats: {habitat?.map( item => item.name + ' ') ?? ':('}</p>
+								<p className={styles.p}>Tipo/s: {pokemon?.types.map(item => capitalizeFirstLetter(item.type.name) + ' ')}</p>
+								<p className={styles.p}>Habitats: {habitat?.map( item => capitalizeFirstLetter(item.name) + ' ') ?? ':('}</p>
 								<p className={styles.p}>Altura: { pokemon?.height && pokemon?.height / 10} metros</p>
 								<p className={styles.p}>Peso: { pokemon?.weight && pokemon?.weight / 10 } kg</p>
-								<p className={styles.p}>Habilidades: { pokemon?.abilities.map(item => item.ability.name + ' ') }</p>
+								<p className={styles.p}>Habilidades: { pokemon?.abilities.map(item => capitalizeFirstLetter(item.ability.name) + ' ') }</p>
 
 							</div>
 							<div className={styles.contentDescription}>

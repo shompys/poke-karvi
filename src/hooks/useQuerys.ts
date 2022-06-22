@@ -7,7 +7,7 @@ export const usePokemons = ({
 	limit, 
 	offset,
 }: QueryParams): UseQueryResult<PokemonDataProps[] | undefined> =>
-	useQuery(['getPokemons', limit, offset], () => getPokemons(limit, offset), { keepPreviousData: true });
+	useQuery(['getPokemons', limit, offset], () => getPokemons(limit, offset));
 
 export const usePokemonSpecie = (url?: string): UseQueryResult<PokemonDataSpecieProps | undefined> => {
     
